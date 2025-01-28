@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa GIS</title>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
+    <style>
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script src="layers.js"></script> <!-- Podłącz Twój plik -->
+    <script>
+        // Inicjalizacja mapy
+        var map = new ol.Map({
+            target: 'map',
+            layers: wms_layers.map(layer => layer[0]), // Dodanie warstw
+            view: new ol.View({
+                center: ol.proj.fromLonLat([21.072, 52.52]), // Środek mapy
+                zoom: 8,
+            })
+        });
+    </script>
+</body>
+</html>
